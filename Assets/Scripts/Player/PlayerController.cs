@@ -8,20 +8,33 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerCameraController cameraController;
     [SerializeField] private Rigidbody rb;
 
+    [SerializeField] private float speed;
+    Vector2 lastInput = Vector2.zero;
+
+    private void Update()
+    {
+        //Brackeys ahhh movement
+        Vector3 move = transform.right * lastInput.x + transform.forward * lastInput.y;
+
+        rb.velocity = move * speed * Time.deltaTime;
+    }
+
     public void OnMovement(InputValue movement)
     {
-        if(movement.Get() != null)
+        if (movement.Get() != null)
         {
             Vector2 value = (Vector2)movement.Get();
-
-            rb.AddForce(new Vector3(transform.right.x + value.x, 0, transform.forward.z + value.y) * 50);
-            Debug.Log(value);
+            lastInput = value;
+        }
+        else
+        {
+            lastInput = Vector2.zero;
         }
     }
 
     public void OnCameraLook(InputValue look)
     {
-        if(look.Get() != null)
+        if (look.Get() != null)
         {
             cameraController.UpdateCamera((Vector2)look.Get());
         }
