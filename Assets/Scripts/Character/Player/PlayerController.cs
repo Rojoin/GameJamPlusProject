@@ -10,12 +10,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Character playerCharacter;
 
     [Header("Event Channels")]
-    [SerializeField] private BoolChannelSO toggleCamera;
-    [SerializeField] private BoolChannelSO toggleWeapon;
-    [SerializeField] private BoolChannelSO toggleMovement;
-    [SerializeField] private BoolChannelSO toggleDash;
+    [SerializeField] private BoolChannelSO toggleCameraBO;
+    [SerializeField] private BoolChannelSO toggleWeaponBO;
+    [SerializeField] private BoolChannelSO toggleMovementBO;
+    [SerializeField] private BoolChannelSO toggleDashBO;
 
-    Vector2 lastInput = Vector2.zero;
+    private bool toggleCamera = true;
+    private bool toggleMovement = true;
+
+    private Vector2 lastInput = Vector2.zero;
+
+    private void Awake()
+    {
+        toggleCameraBO.Subscribe(ToggleCamera);
+        toggleMovementBO.Subscribe(ToggleMovement);
+    }
+
+    private void OnDestroy()
+    {
+        toggleCameraBO.Unsubscribe(ToggleCamera);
+        toggleMovementBO.Unsubscribe(ToggleMovement);
+    }
 
     private void Update()
     {
@@ -24,22 +39,31 @@ public class PlayerController : MonoBehaviour
 
     public void OnMovement(InputValue movement)
     {
-        if (movement.Get() != null)
+        if(toggleMovement)
         {
-            Vector2 value = (Vector2)movement.Get();
-            lastInput = value;
-        }
-        else
-        {
-            lastInput = Vector2.zero;
+            if (movement.Get() != null)
+            {
+                Vector2 value = (Vector2)movement.Get();
+                lastInput = value;
+            }
+            else
+            {
+                lastInput = Vector2.zero;
+            }
         }
     }
 
     public void OnCameraLook(InputValue look)
     {
-        if (look.Get() != null)
+        if(toggleCamera)
         {
-            cameraController.UpdateCamera((Vector2)look.Get());
+            if (look.Get() != null)
+            {
+                cameraController.UpdateCamera((Vector2)look.Get());
+            }
         }
     }
+
+    public void ToggleCamera(bool value) => toggleCamera = value;
+    public void ToggleMovement(bool value) => toggleMovement = value;
 }
