@@ -116,6 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3927521934383667653}
+  - component: {fileID: 2682022854840398850}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -138,6 +139,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7061552009911121587}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2682022854840398850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3537745237094253937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c482996750c13b14d8194fc18d2933c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4603487590107178953
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraController: {fileID: 8964277152290078663}
   playerCharacter: {fileID: 8353303768501667918}
+  playerWeapon: {fileID: 2682022854840398850}
   toggleCameraBO: {fileID: 0}
   toggleWeaponBO: {fileID: 0}
   toggleMovementBO: {fileID: 0}
@@ -391,8 +405,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7259970409612393743}
-  moveSpeed: 100
-  maxSpeed: 300
+  moveSpeed: 900
+  maxSpeed: 900
 --- !u!114 &5672537092715169316
 MonoBehaviour:
   m_ObjectHideFlags: 0
