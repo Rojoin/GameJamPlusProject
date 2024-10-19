@@ -5,18 +5,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Set Up Variables")]
     [SerializeField] private PlayerCameraController cameraController;
-    [SerializeField] private Rigidbody rb;
+    [SerializeField] private Character playerCharacter;
 
-    [SerializeField] private float speed;
+    [Header("Event Channels")]
+    [SerializeField] private BoolChannelSO toggleCamera;
+    [SerializeField] private BoolChannelSO toggleWeapon;
+    [SerializeField] private BoolChannelSO toggleMovement;
+    [SerializeField] private BoolChannelSO toggleDash;
+
     Vector2 lastInput = Vector2.zero;
 
     private void Update()
     {
-        //Brackeys ahhh movement
-        Vector3 move = transform.right * lastInput.x + transform.forward * lastInput.y;
-
-        rb.velocity = move * speed * Time.deltaTime;
+        playerCharacter.Move(lastInput);
     }
 
     public void OnMovement(InputValue movement)
