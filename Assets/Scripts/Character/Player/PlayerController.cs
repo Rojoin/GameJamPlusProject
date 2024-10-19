@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [Header("Set Up Variables")]
     [SerializeField] private PlayerCameraController cameraController;
     [SerializeField] private Character playerCharacter;
+    [SerializeField] private Weapon playerWeapon;
 
     [Header("Event Channels")]
     [SerializeField] private BoolChannelSO toggleCameraBO;
@@ -17,19 +18,20 @@ public class PlayerController : MonoBehaviour
 
     private bool toggleCamera = true;
     private bool toggleMovement = true;
+    private bool toggleWeapon = true;
 
     private Vector2 lastInput = Vector2.zero;
 
     private void Awake()
     {
-        toggleCameraBO.Subscribe(ToggleCamera);
-        toggleMovementBO.Subscribe(ToggleMovement);
+        toggleCameraBO?.Subscribe(ToggleCamera);
+        toggleMovementBO?.Subscribe(ToggleMovement);
     }
 
     private void OnDestroy()
     {
-        toggleCameraBO.Unsubscribe(ToggleCamera);
-        toggleMovementBO.Unsubscribe(ToggleMovement);
+        toggleCameraBO?.Unsubscribe(ToggleCamera);
+        toggleMovementBO?.Unsubscribe(ToggleMovement);
     }
 
     private void Update()
@@ -60,6 +62,19 @@ public class PlayerController : MonoBehaviour
             if (look.Get() != null)
             {
                 cameraController.UpdateCamera((Vector2)look.Get());
+            }
+        }
+    }
+
+    public void OnShoot(InputValue shoot)
+    {
+        if(toggleWeapon)
+        {
+            if(shoot.Get() != null)
+            {
+                Vector3 origin = cameraController.transform.position;
+                Vector3 direction = cameraController.transform.forward;
+                playerWeapon.Shoot(origin, direction);
             }
         }
     }
