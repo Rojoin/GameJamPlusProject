@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5371433738865820322}
   - component: {fileID: 4111289212064683120}
   - component: {fileID: 7876265972713644405}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3927521934383667653}
   - component: {fileID: 2682022854840398850}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 3507208068820950363}
   - component: {fileID: 7755387838223785469}
   - component: {fileID: 8652460074288820932}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7310205624785660844}
   - component: {fileID: 8964277152290078663}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 8353303768501667918}
   - component: {fileID: 5672537092715169316}
   - component: {fileID: 7259970409612393743}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,8 +408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7259970409612393743}
-  moveSpeed: 900
-  maxSpeed: 900
+  moveSpeed: 300
+  maxSpeed: 300
 --- !u!114 &5672537092715169316
 MonoBehaviour:
   m_ObjectHideFlags: 0
