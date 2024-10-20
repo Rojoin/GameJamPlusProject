@@ -6,8 +6,8 @@ using UnityEngine.Serialization;
 
 public abstract class HackingMiniGameBase : MonoBehaviour
 {
-    public UnityAction onStart;
-    public UnityAction onFinished;
+    public UnityEvent onStart;
+    public UnityEvent onFinished;
 
     public List<Func<bool>> objectives = new List<Func<bool>>();
 
