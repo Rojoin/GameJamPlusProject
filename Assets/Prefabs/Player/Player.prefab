@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6815222388948872099}
   - component: {fileID: 5371433738865820322}
   - component: {fileID: 4111289212064683120}
-  - component: {fileID: 7876265972713644405}
   m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
@@ -84,29 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7876265972713644405
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2851735524636773923}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3537745237094253937
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +326,7 @@ GameObject:
   - component: {fileID: 5042472401392817838}
   - component: {fileID: 8353303768501667918}
   - component: {fileID: 5672537092715169316}
-  - component: {fileID: 7259970409612393743}
+  - component: {fileID: 9090300313312043756}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -391,11 +367,14 @@ MonoBehaviour:
   cameraController: {fileID: 8964277152290078663}
   playerCharacter: {fileID: 8353303768501667918}
   playerWeapon: {fileID: 2682022854840398850}
+  currentHealth: 0
   playerRefGO: {fileID: 11400000, guid: a4df183088707cc4cbff3de842689197, type: 2}
   toggleCameraBO: {fileID: 0}
   toggleWeaponBO: {fileID: 0}
   toggleMovementBO: {fileID: 0}
   toggleDashBO: {fileID: 0}
+  healthChangedChannelSO: {fileID: 0}
+  deathChannelSO: {fileID: 0}
 --- !u!114 &8353303768501667918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,9 +387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ceb1ba701cc76e4ea7858774dbbc823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 7259970409612393743}
-  moveSpeed: 300
-  maxSpeed: 300
+  cc: {fileID: 9090300313312043756}
+  moveSpeed: 500
 --- !u!114 &5672537092715169316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,30 +419,29 @@ MonoBehaviour:
   m_DefaultActionMap: FPS
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!54 &7259970409612393743
-Rigidbody:
+--- !u!143 &9090300313312043756
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7921896176251008019}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.8
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}

@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         toggleWeaponBO?.Unsubscribe(ToggleMovement);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         playerCharacter.Move(lastInput);
     }
