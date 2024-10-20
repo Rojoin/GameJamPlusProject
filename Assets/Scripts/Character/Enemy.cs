@@ -14,9 +14,13 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        agent.destination = player.position;
+        if(player != null)
+        {
+            agent.destination = player.position;
 
-        AttackTimer();
+            AttackTimer();
+        }
+        
     }
 
     private void AttackTimer()
@@ -40,5 +44,10 @@ public class Enemy : MonoBehaviour
         }
         else
             Debug.Log("Missed attack");
+    }
+
+    public void SetPlayer(Transform playerTransform)
+    {
+        player = playerTransform;
     }
 }

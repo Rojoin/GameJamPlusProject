@@ -391,6 +391,7 @@ MonoBehaviour:
   cameraController: {fileID: 8964277152290078663}
   playerCharacter: {fileID: 8353303768501667918}
   playerWeapon: {fileID: 2682022854840398850}
+  playerRefGO: {fileID: 11400000, guid: a4df183088707cc4cbff3de842689197, type: 2}
   toggleCameraBO: {fileID: 0}
   toggleWeaponBO: {fileID: 0}
   toggleMovementBO: {fileID: 0}

@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Weapon playerWeapon;
 
     [Header("Event Channels")]
+    [SerializeField] private GameObjectChannelSO playerRefGO;
     [SerializeField] private BoolChannelSO toggleCameraBO;
     [SerializeField] private BoolChannelSO toggleWeaponBO;
     [SerializeField] private BoolChannelSO toggleMovementBO;
@@ -27,6 +28,8 @@ public class PlayerController : MonoBehaviour
         toggleCameraBO?.Subscribe(ToggleCamera);
         toggleMovementBO?.Subscribe(ToggleMovement);
         toggleWeaponBO?.Subscribe(ToggleMovement);
+
+        playerRefGO.RaiseEvent(gameObject);
     }
 
     private void OnDestroy()
