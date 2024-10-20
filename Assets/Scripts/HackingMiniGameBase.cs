@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public abstract class HackingMiniGameBase : MonoBehaviour
 {
     public UnityAction onStart;
     public UnityAction onFinished;
-    
+
     public List<Func<bool>> objectives = new List<Func<bool>>();
 
 
@@ -27,5 +28,4 @@ public abstract class HackingMiniGameBase : MonoBehaviour
     {
         onFinished?.Invoke();
     }
-    
 }
