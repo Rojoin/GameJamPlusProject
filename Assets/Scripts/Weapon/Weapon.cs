@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [SerializeField] LayerMask targetLayer;
+
     public void Shoot(Vector3 origin, Vector3 direction)
     {
         RaycastHit hit;
         Ray ray = new Ray(origin, direction);
 
-        if(Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.NameToLayer("Enemy")))
+        if(Physics.Raycast(ray, out hit, Mathf.Infinity, targetLayer))
         {
             Destroy(hit.collider.gameObject);
         }

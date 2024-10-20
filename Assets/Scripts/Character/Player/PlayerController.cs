@@ -26,12 +26,14 @@ public class PlayerController : MonoBehaviour
     {
         toggleCameraBO?.Subscribe(ToggleCamera);
         toggleMovementBO?.Subscribe(ToggleMovement);
+        toggleWeaponBO?.Subscribe(ToggleMovement);
     }
 
     private void OnDestroy()
     {
         toggleCameraBO?.Unsubscribe(ToggleCamera);
         toggleMovementBO?.Unsubscribe(ToggleMovement);
+        toggleWeaponBO?.Unsubscribe(ToggleMovement);
     }
 
     private void Update()
