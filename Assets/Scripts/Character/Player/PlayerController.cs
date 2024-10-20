@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        Debug.Log("Player death");
+
     }
 
     public void ToggleCamera(bool value) => toggleCamera = value;

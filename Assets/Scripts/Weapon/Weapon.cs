@@ -13,8 +13,7 @@ public class Weapon : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity, targetLayer))
         {
-            Debug.Log("Shot: " + hit.collider.gameObject.name);
-            hit.collider.gameObject.GetComponent<IDamageable>()?.RecieveDamage(1);
+            hit.collider.GetComponent<IDamageable>()?.RecieveDamage(1);
         }
     }
 }
