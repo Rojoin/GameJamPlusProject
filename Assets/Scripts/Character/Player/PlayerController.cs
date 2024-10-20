@@ -5,20 +5,23 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
-    [Header("Set Up Variables")]
-    [SerializeField] private PlayerCameraController cameraController;
+    [Header("Set Up Variables")] [SerializeField]
+    private PlayerCameraController cameraController;
+
     [SerializeField] private Character playerCharacter;
     [SerializeField] private Weapon playerWeapon;
     [SerializeField] private int currentHealth;
 
-    [Header("Event Channels")]
-    [SerializeField] private GameObjectChannelSO playerRefGO;
+    [Header("Event Channels")] [SerializeField]
+    private GameObjectChannelSO playerRefGO;
+
     [SerializeField] private BoolChannelSO toggleCameraBO;
     [SerializeField] private BoolChannelSO toggleWeaponBO;
     [SerializeField] private BoolChannelSO toggleMovementBO;
     [SerializeField] private BoolChannelSO toggleDashBO;
     [SerializeField] private IntChannelSO healthChangedChannelSO;
     [SerializeField] private VoidChannelSO deathChannelSO;
+    [SerializeField] private BoolChannelSO toggleHudInteractable;
 
     private bool toggleCamera = true;
     private bool toggleMovement = true;
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         toggleMovementBO?.Subscribe(ToggleMovement);
         toggleWeaponBO?.Subscribe(ToggleMovement);
 
+        Cursor.visible = false;
         playerRefGO.RaiseEvent(gameObject);
     }
 
@@ -49,7 +53,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void OnMovement(InputValue movement)
     {
-        if(toggleMovement)
+        if (toggleMovement)
         {
             if (movement.Get() != null)
             {
@@ -65,7 +69,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void OnCameraLook(InputValue look)
     {
-        if(toggleCamera)
+        if (toggleCamera)
         {
             if (look.Get() != null)
             {
@@ -76,9 +80,9 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void OnShoot(InputValue shoot)
     {
-        if(toggleWeapon)
+        if (toggleWeapon)
         {
-            if(shoot.Get() != null)
+            if (shoot.Get() != null)
             {
                 Vector3 origin = cameraController.transform.position;
                 Vector3 direction = cameraController.transform.forward;
@@ -111,6 +115,18 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     }
 
-    public void ToggleCamera(bool value) => toggleCamera = value;
+    public void ToggleCamera(bool value)
+    {
+        toggleCamera = value;
+        Cursor.lockState = value ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !value;
+        toggleHudInteractable.RaiseEvent(!value);
+    }
+
+    public void OnToggleCamera()
+    {
+        toggleCameraBO.RaiseEvent(!toggleCamera);
+    }
+
     public void ToggleMovement(bool value) => toggleMovement = value;
 }
