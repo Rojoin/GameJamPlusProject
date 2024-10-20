@@ -1,26 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private GameObject creditsMenu;
     public void PlayButton()
     {
-        Debug.Log("Play");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
     public void OptionsButton()
     {
-        Debug.Log("Options");
+        optionsMenu.SetActive(!optionsMenu.activeSelf);
+        mainMenu.SetActive(false);
     }
 
     public void CreditsButton()
     {
-        Debug.Log("Credits");
+        optionsMenu.SetActive(!creditsMenu.activeSelf);
+        mainMenu.SetActive(false);
     }
 
     public void QuitButton()
     {
-        Debug.Log("Quit");
+        Application.Quit();
+    }
+
+    public void BackButton()
+    {
+        optionsMenu.SetActive(false);
+        creditsMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 }
