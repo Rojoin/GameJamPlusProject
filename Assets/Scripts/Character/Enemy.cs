@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
-    [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Transform player;
     [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private Transform player;
+    [SerializeField] private NavMeshAgent agent;
+
+    [SerializeField] private IntChannelSO recieveDamageChannelSO;
+    [SerializeField] private VoidChannelSO deathChannelSO;
+    [SerializeField] private int currentHealth;
 
     private float maxTimer = 3.0f;
     private float currentTimer = 0.0f;
@@ -49,5 +54,30 @@ public class Enemy : MonoBehaviour
     public void SetPlayer(Transform playerTransform)
     {
         player = playerTransform;
+    }
+
+    public void RecieveDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            recieveDamageChannelSO?.RaiseEvent(currentHealth);
+        }
+    }
+
+    public void HealDamage(int heal)
+    {
+        currentHealth += heal;
+    }
+
+    public void Die()
+    {
+        deathChannelSO?.RaiseEvent();
+        Destroy(gameObject);
     }
 }

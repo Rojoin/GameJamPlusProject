@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     [Header("Set Up Variables")]
     [SerializeField] private PlayerCameraController cameraController;
     [SerializeField] private Character playerCharacter;
     [SerializeField] private Weapon playerWeapon;
+    [SerializeField] private int currentHealth;
 
     [Header("Event Channels")]
     [SerializeField] private GameObjectChannelSO playerRefGO;
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BoolChannelSO toggleWeaponBO;
     [SerializeField] private BoolChannelSO toggleMovementBO;
     [SerializeField] private BoolChannelSO toggleDashBO;
+    [SerializeField] private IntChannelSO healthChangedChannelSO;
+    [SerializeField] private VoidChannelSO deathChannelSO;
 
     private bool toggleCamera = true;
     private bool toggleMovement = true;
@@ -82,6 +85,30 @@ public class PlayerController : MonoBehaviour
                 playerWeapon.Shoot(origin, direction);
             }
         }
+    }
+
+    public void RecieveDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            deathChannelSO?.RaiseEvent();
+        }
+        else
+        {
+            healthChangedChannelSO?.RaiseEvent(currentHealth);
+        }
+    }
+
+    public void HealDamage(int heal)
+    {
+        currentHealth += heal;
+    }
+
+    public void Die()
+    {
+        Debug.Log("Player death");
     }
 
     public void ToggleCamera(bool value) => toggleCamera = value;

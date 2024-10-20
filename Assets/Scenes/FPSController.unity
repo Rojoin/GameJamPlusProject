@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 1089475641}
   - component: {fileID: 1089475640}
   - component: {fileID: 1089475639}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: Cube (4)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 1143767111}
   - component: {fileID: 1143767110}
   - component: {fileID: 1143767109}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: Cube (3)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -652,7 +652,7 @@ GameObject:
   - component: {fileID: 1491997999}
   - component: {fileID: 1491997998}
   - component: {fileID: 1491997997}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: Cube (5)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 1518077262}
   - component: {fileID: 1518077261}
   - component: {fileID: 1518077260}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1239,7 +1239,7 @@ GameObject:
   - component: {fileID: 1922247776}
   - component: {fileID: 1922247775}
   - component: {fileID: 1922247774}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1442,6 +1442,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2682022854840398850, guid: 4b0acf495f201594db228e61e78c0280, type: 3}
+      propertyPath: targetLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042472401392817838, guid: 4b0acf495f201594db228e61e78c0280, type: 3}
+      propertyPath: currentHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7061552009911121587, guid: 4b0acf495f201594db228e61e78c0280, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1485,6 +1493,14 @@ PrefabInstance:
     - target: {fileID: 7921896176251008019, guid: 4b0acf495f201594db228e61e78c0280, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353303768501667918, guid: 4b0acf495f201594db228e61e78c0280, type: 3}
+      propertyPath: maxSpeed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353303768501667918, guid: 4b0acf495f201594db228e61e78c0280, type: 3}
+      propertyPath: moveSpeed
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
