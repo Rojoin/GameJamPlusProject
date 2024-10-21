@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObjectChannelSO playerChannel;
 
     [SerializeField] private float maxTimer = 7.0f;
-    private Transform playerTransform;
+    [SerializeField] private Transform playerTransform;
 
     private float currentTimer = 0.0f;
 

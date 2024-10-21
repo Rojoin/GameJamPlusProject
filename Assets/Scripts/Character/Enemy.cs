@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void RecieveDamage(float damage)
     {
-        SoundManager.Instance.PlaySound(hitAudioClip);
+        SoundManager.Instance?.PlaySound(hitAudioClip);
 
         currentHealth -= damage;
 
