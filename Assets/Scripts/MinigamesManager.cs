@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class MinigamesManager : MonoBehaviour
@@ -17,13 +18,21 @@ public class MinigamesManager : MonoBehaviour
 
     public List<BoolChannelSO> limiterChannel;
     public BoolChannelSO toggleHudInteratability;
+    public FloatChannelSO healthChannel;
+    public Image healthSprite;
     private CanvasGroup canvasGroup;
     private List<int> positionsTaken = new List<int>();
 
     public void OnEnable()
     {
         canvasGroup = gameObject.GetComponent<CanvasGroup>();
+        healthChannel.Subscribe(ChangeHealthBar);
         toggleHudInteratability.Subscribe(ToggleHudInteratability);
+    }
+
+    private void ChangeHealthBar(float obj)
+    {
+        healthSprite.fillAmount = obj;
     }
 
     private void OnDisable()
