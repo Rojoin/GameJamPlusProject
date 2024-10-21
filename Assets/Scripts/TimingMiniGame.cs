@@ -9,6 +9,7 @@ public class TimingMiniGame : HackingMiniGameBase
     public float threshold = 100f;
     private bool isActive = false;
     private float targetRotation = 0;
+    public float initiaRotation = 0;
 
     [ContextMenu("Start Game")]
     public override void StartMiniGame()
@@ -19,6 +20,7 @@ public class TimingMiniGame : HackingMiniGameBase
         targetRotation = Random.Range(0, 359);
         objectiveTransform.rotation = Quaternion.Euler(0, 0, targetRotation);
         rotatingSprite.rotation = Quaternion.identity;
+      
     }
 
     public override void UpdateMiniGame()
