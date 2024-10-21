@@ -612,6 +612,7 @@ MonoBehaviour:
   toggleWeaponBO: {fileID: 11400000, guid: c98f4e95ff24de94fa59b4cf0796e874, type: 2}
   toggleMovementBO: {fileID: 11400000, guid: e70d5b0aeec1aa44b9817c8677ea055d, type: 2}
   toggleDashBO: {fileID: 11400000, guid: 617e4c7d9cb5eb744a56cea1f808d93a, type: 2}
+  dashStartChannelBO: {fileID: 11400000, guid: d4eda259c40f67b45b27ba5c9d611e5a, type: 2}
   healthChangedChannelSO: {fileID: 11400000, guid: 0c506a82f778bc94282a17a86bb27990, type: 2}
   deathChannelSO: {fileID: 11400000, guid: bb1cf75da122d8d40a0445ecb435193a, type: 2}
   toggleHudInteractable: {fileID: 11400000, guid: defe5ff2f3861c746978daace3ec1ff6, type: 2}
@@ -628,6 +629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cc: {fileID: 9090300313312043756}
+  dashChannelSO: {fileID: 11400000, guid: d4eda259c40f67b45b27ba5c9d611e5a, type: 2}
   moveSpeed: 500
 --- !u!114 &5672537092715169316
 MonoBehaviour:

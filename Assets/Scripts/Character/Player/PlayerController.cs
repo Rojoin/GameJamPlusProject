@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
-    [Header("Set Up Variables")] [SerializeField]
+    [Header("Set Up Variables")]
+    [SerializeField]
     private PlayerCameraController cameraController;
 
     [SerializeField] private Character playerCharacter;
@@ -13,13 +14,15 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private int maxHealth;
     private int currentHealth;
 
-    [Header("Event Channels")] [SerializeField]
+    [Header("Event Channels")]
+    [SerializeField]
     private GameObjectChannelSO playerRefGO;
 
     [SerializeField] private BoolChannelSO toggleCameraBO;
     [SerializeField] private BoolChannelSO toggleWeaponBO;
     [SerializeField] private BoolChannelSO toggleMovementBO;
     [SerializeField] private BoolChannelSO toggleDashBO;
+    [SerializeField] private BoolChannelSO dashStartChannelBO;
     [SerializeField] private FloatChannelSO healthChangedChannelSO;
     [SerializeField] private VoidChannelSO deathChannelSO;
     [SerializeField] private BoolChannelSO toggleHudInteractable;
@@ -27,6 +30,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     private bool toggleCamera = true;
     private bool toggleMovement = true;
     private bool toggleWeapon = true;
+    private bool toggleDash = true;
+    private bool dashStarted = false;
 
     private Vector2 lastInput = Vector2.zero;
 
@@ -35,6 +40,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         toggleCameraBO?.Subscribe(ToggleCamera);
         toggleMovementBO?.Subscribe(ToggleMovement);
         toggleWeaponBO?.Subscribe(ToggleWeapon);
+        toggleDashBO?.Subscribe(ToggleDash);
+        dashStartChannelBO?.Subscribe(ToggleDashStarted);
 
         Cursor.visible = false;
         playerRefGO.RaiseEvent(gameObject);
@@ -44,8 +51,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         toggleCameraBO?.Unsubscribe(ToggleCamera);
         toggleMovementBO?.Unsubscribe(ToggleMovement);
-        toggleWeaponBO?.Unsubscribe(ToggleMovement);
         toggleWeaponBO?.Unsubscribe(ToggleWeapon);
+        toggleDashBO?.Unsubscribe(ToggleDash);
+        dashStartChannelBO?.Unsubscribe(ToggleDashStarted);
     }
 
     private void FixedUpdate()
@@ -93,6 +101,29 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
 
+    public void OnDash(InputValue dash)
+    {
+        Debug.Log(1);
+        if (toggleDash)
+        {
+            Debug.Log(2);
+
+            if (dash.Get() != null && dashStarted == false)
+            {
+                Debug.Log(3);
+
+                Vector2 dashInput;
+                if (lastInput == Vector2.zero)
+                    dashInput = Vector2.up;
+                else
+                    dashInput = lastInput;
+
+                playerCharacter.StartDash(dashInput);
+
+            }
+        }
+    }
+
     public void RecieveDamage(int damage)
     {
         currentHealth -= damage;
@@ -103,7 +134,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         else
         {
-            healthChangedChannelSO?.RaiseEvent(currentHealth/maxHealth);
+            healthChangedChannelSO?.RaiseEvent(currentHealth / maxHealth);
         }
     }
 
@@ -114,6 +145,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void Die()
     {
+
     }
 
     public void ToggleCamera(bool value)
@@ -132,4 +164,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void ToggleMovement(bool value) => toggleMovement = value;
     public void ToggleWeapon(bool value) => toggleWeapon = value;
+    public void ToggleDash(bool value) => toggleDash = value;
+    public void ToggleDashStarted(bool value) => dashStarted = value;
 }
