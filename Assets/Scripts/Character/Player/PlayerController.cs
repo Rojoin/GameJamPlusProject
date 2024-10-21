@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     [SerializeField] private Character playerCharacter;
     [SerializeField] private Weapon playerWeapon;
-    [SerializeField] private int currentHealth;
+    [SerializeField] private int maxHealth;
+    private int currentHealth;
 
     [Header("Event Channels")] [SerializeField]
     private GameObjectChannelSO playerRefGO;
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private BoolChannelSO toggleWeaponBO;
     [SerializeField] private BoolChannelSO toggleMovementBO;
     [SerializeField] private BoolChannelSO toggleDashBO;
-    [SerializeField] private IntChannelSO healthChangedChannelSO;
+    [SerializeField] private FloatChannelSO healthChangedChannelSO;
     [SerializeField] private VoidChannelSO deathChannelSO;
     [SerializeField] private BoolChannelSO toggleHudInteractable;
 
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         else
         {
-            healthChangedChannelSO?.RaiseEvent(currentHealth);
+            healthChangedChannelSO?.RaiseEvent(currentHealth/maxHealth);
         }
     }
 
@@ -112,7 +113,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void Die()
     {
-
     }
 
     public void ToggleCamera(bool value)
