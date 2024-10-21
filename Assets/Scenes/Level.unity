@@ -2708,6 +2708,10 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 627721839}
+    - target: {fileID: 5978120257847354218, guid: f92350a699f268b478dd5879a9e1c6fe, type: 3}
+      propertyPath: playerDeathChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: bb1cf75da122d8d40a0445ecb435193a, type: 2}
     - target: {fileID: 8547915456967781921, guid: f92350a699f268b478dd5879a9e1c6fe, type: 3}
       propertyPath: m_Name
       value: EnemyManager
