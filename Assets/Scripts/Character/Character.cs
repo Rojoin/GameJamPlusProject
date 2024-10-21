@@ -8,12 +8,13 @@ public class Character : MonoBehaviour
     [SerializeField] private BoolChannelSO dashChannelSO;
     [SerializeField] private float moveSpeed;
 
+
     private Vector2 dashInput;
 
     private bool dashing = false;
 
     private float currentDashTimer = 0.0f;
-    private float maxDashTimer = 0.4f;
+    private float maxDashTimer = 0.2f;
 
     private void FixedUpdate()
     {

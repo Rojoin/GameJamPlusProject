@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2955442790712220656}
   - component: {fileID: 5950956044748011344}
   - component: {fileID: 651058785873976289}
+  - component: {fileID: 6535740960720023399}
   m_Layer: 0
   m_Name: S_Bridges_turn
   m_TagString: Untagged
@@ -171,3 +172,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.16086286, y: 1.9650149, z: 6.044999}
   m_Center: {x: -2.9423778, y: 0.9249085, z: -0.0009796969}
+--- !u!64 &6535740960720023399
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5902563068982279651}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8368676821069094926, guid: 5529bac0923aaf24fa89605e51a3ab62, type: 3}

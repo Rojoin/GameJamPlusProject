@@ -239,7 +239,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8642844477598953589}
   - component: {fileID: 8012251577782601324}
-  - component: {fileID: 228451762379485026}
   - component: {fileID: 451983679990385281}
   m_Layer: 3
   m_Name: Camera
@@ -314,14 +313,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &228451762379485026
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3795547329977225883}
-  m_Enabled: 1
 --- !u!114 &451983679990385281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,7 +557,7 @@ GameObject:
   - component: {fileID: 8353303768501667918}
   - component: {fileID: 5672537092715169316}
   - component: {fileID: 9090300313312043756}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,7 +597,7 @@ MonoBehaviour:
   cameraController: {fileID: 8964277152290078663}
   playerCharacter: {fileID: 8353303768501667918}
   playerWeapon: {fileID: 2682022854840398850}
-  maxHealth: 100
+  maxHealth: 25
   playerRefGO: {fileID: 11400000, guid: a4df183088707cc4cbff3de842689197, type: 2}
   toggleCameraBO: {fileID: 11400000, guid: 5b92fda94a17d3c408f3f21bbb9fc1b2, type: 2}
   toggleWeaponBO: {fileID: 11400000, guid: c98f4e95ff24de94fa59b4cf0796e874, type: 2}
