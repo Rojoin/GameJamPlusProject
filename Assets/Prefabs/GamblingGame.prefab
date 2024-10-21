@@ -508,7 +508,7 @@ MonoBehaviour:
   - {fileID: 3689269460646561940}
   minPosY: 0
   maxPosY: 400
-  symbolHeight: 120
+  symbolHeight: 100
   scrollSpeed: 2500
   duration: 3
   totalSymbols: 5
