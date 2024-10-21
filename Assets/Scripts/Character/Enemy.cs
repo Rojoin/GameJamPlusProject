@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private Animator animator;
     [SerializeField] private CapsuleCollider capsuleCollider;
     [SerializeField] AudioClip hitAudioClip;
+    [SerializeField] AudioClip deathAudioClip;
 
     [SerializeField] private FloatChannelSO recieveDamageChannelSO;
     [SerializeField] private VoidChannelSO deathChannelSO;
@@ -96,6 +97,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private IEnumerator DeathCoroutine()
     {
+        SoundManager.Instance?.PlaySound(deathAudioClip);
+
         capsuleCollider.enabled = false;
         animator.SetTrigger("Death");
         player = null;

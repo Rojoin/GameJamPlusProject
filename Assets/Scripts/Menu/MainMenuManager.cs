@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenu;
-    [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject creditsMenu;
     public void PlayButton()
     {
@@ -15,13 +14,12 @@ public class MainMenuManager : MonoBehaviour
 
     public void OptionsButton()
     {
-        optionsMenu.SetActive(!optionsMenu.activeSelf);
         mainMenu.SetActive(false);
     }
 
     public void CreditsButton()
     {
-        optionsMenu.SetActive(!creditsMenu.activeSelf);
+        creditsMenu.SetActive(true);
         mainMenu.SetActive(false);
     }
 
@@ -32,7 +30,6 @@ public class MainMenuManager : MonoBehaviour
 
     public void BackButton()
     {
-        optionsMenu.SetActive(false);
         creditsMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
