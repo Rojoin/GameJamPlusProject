@@ -246,8 +246,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3102765105779580911}
   - {fileID: 2663200751750229990}
+  - {fileID: 3102765105779580911}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -348,7 +348,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c98f4e95ff24de94fa59b4cf0796e874, type: 2}
   - {fileID: 11400000, guid: e70d5b0aeec1aa44b9817c8677ea055d, type: 2}
   toggleHudInteratability: {fileID: 11400000, guid: defe5ff2f3861c746978daace3ec1ff6, type: 2}
-  healthChannel: {fileID: 0}
+  healthChannel: {fileID: 11400000, guid: 0c506a82f778bc94282a17a86bb27990, type: 2}
   healthSprite: {fileID: 0}
 --- !u!225 &1383165656003673511
 CanvasGroup:
