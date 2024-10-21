@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private Transform player;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] AudioClip hitAudioClip;
 
     [SerializeField] private IntChannelSO recieveDamageChannelSO;
     [SerializeField] private VoidChannelSO deathChannelSO;
@@ -58,6 +59,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void RecieveDamage(int damage)
     {
+        SoundManager.Instance.PlaySound(hitAudioClip);
+        
         currentHealth -= damage;
 
         if(currentHealth <= 0)

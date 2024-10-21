@@ -145,9 +145,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   player: {fileID: 0}
   agent: {fileID: 7181653980585798452}
+  hitAudioClip: {fileID: 8300000, guid: d49c28f691c975e4f830f3687e55cfe5, type: 3}
   recieveDamageChannelSO: {fileID: 0}
   deathChannelSO: {fileID: 0}
   currentHealth: 2
