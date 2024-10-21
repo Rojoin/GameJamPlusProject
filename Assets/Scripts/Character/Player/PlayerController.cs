@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         toggleCameraBO?.Subscribe(ToggleCamera);
         toggleMovementBO?.Subscribe(ToggleMovement);
-        toggleWeaponBO?.Subscribe(ToggleMovement);
+        toggleWeaponBO?.Subscribe(ToggleWeapon);
 
         Cursor.visible = false;
         playerRefGO.RaiseEvent(gameObject);
@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         toggleCameraBO?.Unsubscribe(ToggleCamera);
         toggleMovementBO?.Unsubscribe(ToggleMovement);
         toggleWeaponBO?.Unsubscribe(ToggleMovement);
+        toggleWeaponBO?.Unsubscribe(ToggleWeapon);
     }
 
     private void FixedUpdate()
@@ -121,6 +122,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         Cursor.lockState = value ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !value;
         toggleHudInteractable.RaiseEvent(!value);
+        toggleWeaponBO.RaiseEvent(value);
     }
 
     public void OnToggleCamera()
@@ -129,4 +131,5 @@ public class PlayerController : MonoBehaviour, IDamageable
     }
 
     public void ToggleMovement(bool value) => toggleMovement = value;
+    public void ToggleWeapon(bool value) => toggleWeapon = value;
 }
