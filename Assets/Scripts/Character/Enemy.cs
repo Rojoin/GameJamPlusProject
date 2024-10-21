@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private Transform player;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Animator animator;
+    [SerializeField] private CapsuleCollider capsuleCollider;
     [SerializeField] AudioClip hitAudioClip;
 
     [SerializeField] private FloatChannelSO recieveDamageChannelSO;
@@ -21,21 +23,27 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if(player != null)
+        if (player != null)
         {
+            if (currentTimer == 0)
+                animator.SetBool("Attacking", false);
+
             agent.destination = player.position;
+
+            animator.SetBool("Walking", true);
 
             AttackTimer();
         }
-        
+
     }
 
     private void AttackTimer()
     {
         currentTimer += Time.deltaTime;
 
-        if(currentTimer > maxTimer)
+        if (currentTimer > maxTimer)
         {
+            animator.SetBool("Attacking", true);
             TryAttack();
             currentTimer = 0;
         }
@@ -45,7 +53,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         var colliders = Physics.OverlapSphere(transform.position, 4.0f, playerLayer);
 
-        if(colliders.Length > 0)
+        if (colliders.Length > 0)
         {
             Debug.Log("Attacked player");
             colliders[0].GetComponent<IDamageable>().RecieveDamage(damage);
@@ -62,10 +70,10 @@ public class Enemy : MonoBehaviour, IDamageable
     public void RecieveDamage(float damage)
     {
         SoundManager.Instance.PlaySound(hitAudioClip);
-        
+
         currentHealth -= damage;
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -83,6 +91,15 @@ public class Enemy : MonoBehaviour, IDamageable
     public void Die()
     {
         deathChannelSO?.RaiseEvent();
+        StartCoroutine(DeathCoroutine());
+    }
+
+    private IEnumerator DeathCoroutine()
+    {
+        capsuleCollider.enabled = false;
+        animator.SetTrigger("Death");
+        player = null;
+        yield return new WaitForSeconds(2.0f);
         Destroy(gameObject);
     }
 }
