@@ -17,7 +17,7 @@ public class GamblingMinigame : HackingMiniGameBase
     private float timer = 0;
     private bool isScrolling = false;
     private List<float> targetPosY;
-    private int totalSymbols = 8;
+    public int totalSymbols = 5;
     public int maxCountUntilSecure = 3;
     private int pullCount = 0;
 
