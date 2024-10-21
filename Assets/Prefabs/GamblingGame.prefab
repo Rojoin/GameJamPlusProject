@@ -512,7 +512,7 @@ MonoBehaviour:
   symbolHeight: 120
   scrollSpeed: 2500
   duration: 3
-  maxCountUntilSecure: 3
+  maxCountUntilSecure: 1
 --- !u!1 &4552948157772986851
 GameObject:
   m_ObjectHideFlags: 0

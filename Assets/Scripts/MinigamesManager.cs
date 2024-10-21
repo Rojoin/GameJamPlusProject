@@ -55,22 +55,21 @@ public class MinigamesManager : MonoBehaviour
             if (timer > timeUntilNextMinigame)
             {
                 timer = 0;
-                Transform parent = GetRandomPosition();
+                Transform parent = GetRandomPosition(out var range);
                 HackingMiniGameBase currentGame =
                     Instantiate(minigames[Random.Range(0, minigames.Count)], parent);
                 limiterChannel[minigamesActive].RaiseEvent(false);
                 minigamesActive++;
                 activeMinigames.Add(currentGame);
-                currentGame.onFinished.AddListener(() => DestroyMinigame(currentGame));
+                currentGame.onFinished.AddListener(() => DestroyMinigame(currentGame, range));
 
                 currentGame.StartMiniGame();
             }
         }
     }
 
-    private Transform GetRandomPosition()
+    private Transform GetRandomPosition(out int range)
     {
-        int range;
         do
         {
             range = Random.Range(0, possibleSpawnPoints.Count);
@@ -81,12 +80,12 @@ public class MinigamesManager : MonoBehaviour
     }
 
 
-    private void DestroyMinigame(HackingMiniGameBase minigame)
+    private void DestroyMinigame(HackingMiniGameBase minigame, int parent)
     {
         minigame.onFinished.RemoveAllListeners();
         minigamesActive--;
         limiterChannel[minigamesActive].RaiseEvent(true);
-
+        positionsTaken.Remove(parent);
         Destroy(minigame.gameObject);
     }
 }
