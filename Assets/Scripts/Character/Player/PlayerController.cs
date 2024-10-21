@@ -5,17 +5,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
-    [Header("Set Up Variables")]
-    [SerializeField]
+    [Header("Set Up Variables")] [SerializeField]
     private PlayerCameraController cameraController;
 
     [SerializeField] private Character playerCharacter;
     [SerializeField] private Weapon playerWeapon;
-    [SerializeField] private int maxHealth;
-    private int currentHealth;
+    [SerializeField] private float maxHealth;
+    private float currentHealth;
 
-    [Header("Event Channels")]
-    [SerializeField]
+    [Header("Event Channels")] [SerializeField]
     private GameObjectChannelSO playerRefGO;
 
     [SerializeField] private BoolChannelSO toggleCameraBO;
@@ -45,6 +43,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         Cursor.visible = false;
         playerRefGO.RaiseEvent(gameObject);
+        HealDamage(maxHealth);
     }
 
     private void OnDestroy()
@@ -114,12 +113,11 @@ public class PlayerController : MonoBehaviour, IDamageable
                     dashInput = lastInput;
 
                 playerCharacter.StartDash(dashInput);
-
             }
         }
     }
 
-    public void RecieveDamage(int damage)
+    public void RecieveDamage(float damage)
     {
         currentHealth -= damage;
 
@@ -127,20 +125,19 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             deathChannelSO?.RaiseEvent();
         }
-        else
-        {
-            healthChangedChannelSO?.RaiseEvent(currentHealth / maxHealth);
-        }
+
+        float health = currentHealth / maxHealth;
+        Debug.Log($"The player healthbar should be: {health}");
+        healthChangedChannelSO?.RaiseEvent(health);
     }
 
-    public void HealDamage(int heal)
+    public void HealDamage(float heal)
     {
         currentHealth += heal;
     }
 
     public void Die()
     {
-
     }
 
     public void ToggleCamera(bool value)

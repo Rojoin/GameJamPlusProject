@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a1bd58dd7548198609eabd8ae2bb7d, type: 3}
   m_Name: Pixelation
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   widthPixelation:
     m_OverrideState: 1
     m_Value: 512
@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Value: 256
   colorPrecision:
     m_OverrideState: 1
-    m_Value: 16
+    m_Value: 20.34
 --- !u!114 &-758010384845797820
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -119,13 +119,13 @@ MonoBehaviour:
     m_Value: 1
   ditherThreshold:
     m_OverrideState: 1
-    m_Value: 3.53
+    m_Value: 2.82
   ditherStrength:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1.37
   ditherScale:
     m_OverrideState: 1
-    m_Value: 4.67
+    m_Value: 5.23
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

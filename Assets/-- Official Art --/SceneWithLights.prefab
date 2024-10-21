@@ -2143,7 +2143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2800281777430648072, guid: 87547c1d709f6e14781429d4541ad2f5, type: 3}
       propertyPath: m_Name
-      value: Assets (1) Variant
+      value: SceneWithLights
       objectReference: {fileID: 0}
     - target: {fileID: 3004464818511913026, guid: 87547c1d709f6e14781429d4541ad2f5, type: 3}
       propertyPath: m_VersionIndex
@@ -2384,13 +2384,43 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7741500952197982670, guid: 87547c1d709f6e14781429d4541ad2f5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5386478016135814236}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3970507853720020405, guid: 87547c1d709f6e14781429d4541ad2f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6160311124419330378}
   m_SourcePrefab: {fileID: 100100000, guid: 87547c1d709f6e14781429d4541ad2f5, type: 3}
 --- !u!4 &4192880022869815263 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7741500952197982670, guid: 87547c1d709f6e14781429d4541ad2f5, type: 3}
   m_PrefabInstance: {fileID: 5863489025828406801}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7369401818621027236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3970507853720020405, guid: 87547c1d709f6e14781429d4541ad2f5, type: 3}
+  m_PrefabInstance: {fileID: 5863489025828406801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &6160311124419330378
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7369401818621027236}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8368676821069094926, guid: 5529bac0923aaf24fa89605e51a3ab62, type: 3}
 --- !u!1001 &6669549130457368529
 PrefabInstance:
   m_ObjectHideFlags: 0

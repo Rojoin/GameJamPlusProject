@@ -11,9 +11,10 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] AudioClip hitAudioClip;
 
-    [SerializeField] private IntChannelSO recieveDamageChannelSO;
+    [SerializeField] private FloatChannelSO recieveDamageChannelSO;
     [SerializeField] private VoidChannelSO deathChannelSO;
-    [SerializeField] private int currentHealth;
+    [SerializeField] private float currentHealth;
+    [SerializeField] private float  damage= 5;
 
     private float maxTimer = 3.0f;
     private float currentTimer = 0.0f;
@@ -47,6 +48,7 @@ public class Enemy : MonoBehaviour, IDamageable
         if(colliders.Length > 0)
         {
             Debug.Log("Attacked player");
+            colliders[0].GetComponent<IDamageable>().RecieveDamage(damage);
         }
         else
             Debug.Log("Missed attack");
@@ -57,7 +59,7 @@ public class Enemy : MonoBehaviour, IDamageable
         player = playerTransform;
     }
 
-    public void RecieveDamage(int damage)
+    public void RecieveDamage(float damage)
     {
         SoundManager.Instance.PlaySound(hitAudioClip);
         
@@ -73,7 +75,7 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void HealDamage(int heal)
+    public void HealDamage(float heal)
     {
         currentHealth += heal;
     }
