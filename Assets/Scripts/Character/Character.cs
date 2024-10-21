@@ -19,7 +19,6 @@ public class Character : MonoBehaviour
     {
         if(dashing)
         {
-            Debug.Log(5);
 
             currentDashTimer += Time.fixedDeltaTime;
 
@@ -45,15 +44,17 @@ public class Character : MonoBehaviour
 
     public void StartDash(Vector2 moveInput)
     {
-        Debug.Log(4);
-        dashing = true;
-        dashInput = moveInput;
-        dashChannelSO.RaiseEvent(true);
+        if(!dashing)
+        {
+            dashing = true;
+            dashInput = moveInput;
+            dashChannelSO.RaiseEvent(true);
+        }
+        
     }
 
     private void Dash()
     {
-        Debug.Log(6);
 
         Vector3 move = transform.right * dashInput.x + transform.forward * dashInput.y;
 

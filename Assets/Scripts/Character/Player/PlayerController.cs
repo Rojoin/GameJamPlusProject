@@ -103,15 +103,10 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void OnDash(InputValue dash)
     {
-        Debug.Log(1);
         if (toggleDash)
         {
-            Debug.Log(2);
-
             if (dash.Get() != null && dashStarted == false)
             {
-                Debug.Log(3);
-
                 Vector2 dashInput;
                 if (lastInput == Vector2.zero)
                     dashInput = Vector2.up;
