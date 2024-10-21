@@ -419,7 +419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 430, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 333.6, y: 432.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &4417590208304705543
@@ -484,9 +484,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8eaf710bdba4c4e83aa18ad1e2f5b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onFinished:
+    m_PersistentCalls:
+      m_Calls: []
   rotatingSprite: {fileID: 8779488950527224161}
   objectiveTransform: {fileID: 5990224140476523222}
-  initialRotation: 0
   rotatingSpeed: 400
   threshold: 10
 --- !u!1 &4845204755532570481
